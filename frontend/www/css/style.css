@@ -45,8 +45,8 @@ ion-view.pane {
   bottom: 48px;
 }
 .toggleStation ion-scroll {
-  /*max-height: 250px;*/
-  max-height: 80vw;
+  max-height: 250px;
+  /*max-height: 80vw;*/
 }
 .currentStationWrapper {
   position: absolute;
@@ -85,4 +85,17 @@ ion-view.pane {
 }
 .currentStationWrapper .stationName .closeIcon.activated{
   color: #f00;
+}
+
+.routeDetails div.scroll {
+  height:100%;
+  position: relative;
+}
+.routeDetails div.scroll ion-scroll{
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height:auto !important;
 }
