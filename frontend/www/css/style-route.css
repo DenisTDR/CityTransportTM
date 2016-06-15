@@ -36,10 +36,10 @@ body {
 .bar-stable .ion-ios-arrow-left {
 position:absolute;
 float:left;
-left:0px; 
+left:0px;
 z-index:100;
 font-size:36px;
-padding:5px 10px; 
+padding:5px 10px;
 color:white;
 }
 /* navigarea principala */
@@ -59,7 +59,7 @@ color:white;
 .tabs-route {
 	padding:0px;
 }
-/*.tabs-route a.tab-item{
+/*.tabs-routes a.tab-item{
 	background:#ddd;
 
 }*/
@@ -87,13 +87,13 @@ color:white;
 	color:white;
 }
 
-/*route lists */
+/*routes lists */
 
 .view-container .list .item-icon-left i{
 	color:#555;
 }
 
-.view-container .list .item-icon-left .icon, 
+.view-container .list .item-icon-left .icon,
 .view-container .list .item-icon-right .icon{
     padding-left: 15px;
 }
@@ -158,10 +158,14 @@ span.timeIsMoney {
 }
 
 .ruta .linie {
-	padding-top:15px;
+	padding-top:0px;
 	font-weight:bold;
-	font-size:20px;
+	font-size:16px;
 	max-width:50px;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0px, -50%, 0px);
+
 }
 
 .toggleStation .item-icon-left{
@@ -190,7 +194,7 @@ span.ora {
 	color:#E62739;;
 }
 /*.timpSpan {
-	
+
 	color:#;
 	text-overflow: ellipsis;
 

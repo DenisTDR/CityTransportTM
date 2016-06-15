@@ -44,11 +44,14 @@ ion-view.pane {
   top: 100px;
   bottom: 48px;
 }
-
+.toggleStation ion-scroll {
+  /*max-height: 250px;*/
+  max-height: 80vw;
+}
 .currentStationWrapper {
   position: absolute;
   background: white;
-  bottom: 50px;
+  bottom: 49px;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -62,12 +65,12 @@ ion-view.pane {
   bottom:0;
 }
 .currentStationWrapper .stationName{
-  font-size:2em;
+  font-size:1.4em;
 }
 
-.toggleStation ion-scroll {
-  max-height: 250px;
-}
+/*.toggleStation ion-scroll {*/
+  /*max-height: 250px;*/
+/*}*/
 
 .headerIcon {
   padding-right:10px;
@@ -75,4 +78,11 @@ ion-view.pane {
 .headerNumber {
   font-weight:bold;
   padding-right:10px;
+}
+
+.currentStationWrapper .stationName .closeIcon:hover{
+  color: #000;
+}
+.currentStationWrapper .stationName .closeIcon.activated{
+  color: #f00;
 }

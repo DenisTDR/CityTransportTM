@@ -2,11 +2,11 @@
  * Created by NM on 5/22/2016.
  */
 
-console.log("route details controller loading");
+console.log("routes details controller loading");
 
 appControllers
   .controller('RouteDetailsController', function($scope, StationsService, RoutesService, $rootScope, $location) {
-    console.log("route details controller loaded");
+    console.log("routes details controller loaded");
     $scope.routes = [];
     $scope.route_id = 0;
     $scope.route = null;
@@ -32,7 +32,7 @@ appControllers
       });
 
       if($rootScope.selectedRoute == undefined) {
-        $location.path('/view/route');
+        $location.path('/view/routes');
         return;
       }
 
@@ -45,7 +45,7 @@ appControllers
     $scope.loadRoute = function(route) {
       $scope.routes = [];
       $scope.route = route;
-      console.log("loading route(details): ", route);
+      console.log("loading routes(details): ", route);
       RoutesService.getRoute(route.line_id).then(function (data) {
         //console.log("sdfdsf", data);
         $scope.routes = data.data.routes;

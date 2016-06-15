@@ -46,5 +46,15 @@ appControllers
       $scope.lines = [];
       $scope.visible = false;
     };
+
+    $scope.getInfo = function () {
+      if($scope.lines.length) {
+        return $scope.lines.length + " linii";
+      }
+      else {
+        return "...";
+      }
+    };
+
     $scope.init();
   });

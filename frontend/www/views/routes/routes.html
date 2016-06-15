@@ -1,0 +1,18 @@
+<ion-view view-title="City Transport Timișoara">
+
+  <ion-content style="top: 0 !important;">
+
+      <ion-item class="item item-icon-left item-icon-right {{route.line_type}}"
+         ng-click="routeClick(route);"
+         ng-repeat="route in routes"
+         ng-if="route.visible"
+
+      >
+        <i class="icon {{route.iconClass}}"></i>
+        {{route.line_name}}
+        <i class="icon ion-ios-location-outline"
+            ng-click="routeMapIconClick(route, $event);"
+        ></i>
+      </ion-item>
+  </ion-content>
+</ion-view>

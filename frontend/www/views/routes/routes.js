@@ -4,8 +4,8 @@
 
 appControllers
 
-  .controller('RouteController', function($scope, $rootScope, RoutesService, $location) {
-    console.log("route controller loaded");
+  .controller('RoutesController', function($scope, $rootScope, RoutesService, $location) {
+    console.log("routes controller loaded");
 
     $scope.selectedTT = "bus";
     $scope.routes = [];
@@ -57,7 +57,7 @@ appControllers
     };
 
     $scope.routeClick = function(route) {
-        console.log("clicked route(for details)");
+        console.log("clicked routes(for details)");
         console.log(route);
         $rootScope.selectedRoute = route;
         $rootScope.$broadcast('openRouteDetails');
@@ -66,7 +66,7 @@ appControllers
 
     $scope.routeMapIconClick = function(route, $event) {
       $event.stopPropagation();
-      console.log("clicked route(for maps)");
+      console.log("clicked routes(for maps)");
       console.log(route);
       $rootScope.selectedRoute = route;
       $rootScope.$broadcast('loadRouteOnMap');

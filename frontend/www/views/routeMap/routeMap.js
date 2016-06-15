@@ -2,24 +2,24 @@
  * Created by NM on 5/22/2016.
  */
 
-console.log("route map controller loading");
+console.log("routes map controller loading");
 
 appControllers
 
   .controller('RouteMapController', function($scope, StationsService, $rootScope, $location, $http) { // uiGmapGoogleMapApi
-    console.log("route map controller loaded");
+    console.log("routes map controller loaded");
     $scope.map = { control: {}, center: { latitude: 45.745139, longitude: 21.241582 }, zoom: 13 };
     $scope.myPosition = {latitude: 45.7456645, longitude: 21.2411096};
     $scope.markers = [];
 
     $scope.$on('loadRouteOnMap', function(){
       var selectedRoute = $rootScope.selectedRoute;
-      console.log("loading map for route ", selectedRoute);
+      console.log("loading map for routes ", selectedRoute);
     });
 
     $scope.init = function () {
       if($rootScope.selectedRoute == undefined) {
-        $location.path('/view/route');
+        $location.path('/view/routes');
         return;
       }
       $scope.$on('loadRouteOnMap', function() {
@@ -47,7 +47,7 @@ appControllers
           directionsDisplay.setPanel(document.getElementById('directionsList'));
         } else {
           console.log(response, status);
-          console.log('Google route unsuccesfull!');
+          console.log('Google routes unsuccesfull!');
         }
       });
     };
@@ -78,7 +78,7 @@ appControllers
     };
 
     $scope.loadRoute = function(route) {
-      console.log("loading route(maps): ", route);
+      console.log("loading routes(maps): ", route);
       var lineId = route.line_id;
       var transportType = route.line_type.toUpperCase();
       $http.get(backendApi + 'get_routes?line_id=' + lineId)

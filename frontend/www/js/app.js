@@ -23,9 +23,9 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
   });
 })
   .config(['$ionicConfigProvider', function($ionicConfigProvider) {
-
   $ionicConfigProvider.tabs.position('top'); // other values: top
-
+    if (ionic.Platform.isAndroid())
+      $ionicConfigProvider.scrolling.jsScrolling(false);
 }])
 .config(function($stateProvider, $urlRouterProvider) { //uiGmapGoogleMapApiProvider
 
@@ -96,12 +96,12 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
         }
       }
     })
-    .state('view.route', {
-      url: '/route',
+    .state('view.routes', {
+      url: '/routes',
       views: {
-        'view-route': {
-          templateUrl: 'views/route/route.html',
-          controller: 'RouteController'
+        'view-routes': {
+          templateUrl: 'views/routes/routes.html',
+          controller: 'RoutesController'
         }
       }
     })
@@ -125,7 +125,7 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
     })
   ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/view/map');
 
   // uiGmapGoogleMapApiProvider.configure({
   //   //    key: 'your api key',

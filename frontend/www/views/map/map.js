@@ -66,7 +66,7 @@ appControllers
     //     transitOptions: {modes: [google.maps.TransitMode[transportType]]}
     //   };
 
-    //   directionsService.route(request, function (response, status) {
+    //   directionsService.routes(request, function (response, status) {
     //     if (status === google.maps.DirectionsStatus.OK) {
     //       directionsDisplay.setDirections(response);
     //       directionsDisplay.setMap($scope.map.control.getGMap());
@@ -75,7 +75,7 @@ appControllers
     //       $scope.directions.showList = true;
     //     } else {
     //       console.log(response, status);
-    //       console.log('Google route unsuccesfull!');
+    //       console.log('Google routes unsuccesfull!');
     //     }
     //   });
     // };
@@ -83,7 +83,8 @@ appControllers
     $scope.init = function() {
       setTimeout(function(){
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
-      });
+        document.getElementsByTagName("ion-header-bar")[1].getElementsByClassName('title')[0].innerHTML = "City Transport Timișoara";
+      }, 100);
     };
     $scope.init();
     var showStations = function (stations) {
