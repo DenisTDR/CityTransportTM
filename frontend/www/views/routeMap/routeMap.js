@@ -66,7 +66,7 @@ appControllers
           if (i === 0 || i === stations.length-1) {
             var iconUrl = 'img/start_2.png'
           } else {
-            var iconUrl = 'img/tramvaie.png'
+            var iconUrl =  switchMeans();
           }
             var marker = new google.maps.Marker(
                 {
@@ -96,6 +96,24 @@ appControllers
       routePath.setMap($scope.map.control.getGMap());
       $scope.map.control.getGMap().fitBounds(bounds);
     };
+
+     var switchMeans = function() {
+        switch ($scope.selectedTT) {
+          case 'bus': iconUrl = 'img/point_bus.png';
+                      break;
+          case 'trolley': iconUrl = 'img/point_trolley.png';
+                      break;
+          case 'tram': iconUrl = 'img/point_tram.png';
+                      break;
+          case 'bicycle': iconUrl = 'img/point_bicycle.png';
+                      break;
+          case 'boat': iconUrl = 'img/point_boat.png';
+                      break;
+          default: iconUrl = "img/point_tram.png";
+        }
+        return iconUrl;
+    }
+
 
     $scope.loadRoute = function(route) {
       console.log("loading routes(maps): ", route);

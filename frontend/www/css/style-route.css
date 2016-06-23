@@ -71,6 +71,12 @@ color:white;
 	background:#e62739;
 	color:white;
 }
+
+.tabs-route a.tram.active,
+.tabs-route a.tram:active{
+	background:#FFB133;
+	color:white;
+}
 .tabs-route a.train.active,
 .tabs-route a.train:active{
 	background:#555555;
