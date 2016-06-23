@@ -127,13 +127,13 @@ def get_arrivals(line_id: int):
 
 @transient.cache('station_arrivals', expire=30)
 def get_arrival(line_id: int, route_id: int, station_id: int) -> ratt.Arrival:
-	try:
-		return ratt.get_station_arrival(line_id, station_id)
-	except Exception as e:
-		print("get_station_arrival(%d, %d) for single station failed: %s" % (line_id, station_id, str(e)))
-		for arrival in get_arrivals(line_id)[route_id]:
-			if arrival.station_id == station_id:
-				return arrival
+	# try:
+	# 	return ratt.get_station_arrival(line_id, station_id)
+	# except Exception as e:
+	# 	print("get_station_arrival(%d, %d) for single station failed: %s" % (line_id, station_id, str(e)))
+	for arrival in get_arrivals(line_id)[route_id]:
+		if arrival.station_id == station_id:
+			return arrival
 
 	return None
 
