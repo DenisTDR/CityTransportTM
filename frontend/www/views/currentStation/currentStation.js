@@ -14,12 +14,19 @@ appControllers
 
     $scope.init = function () {
       $scope.$on('loadCurrentStation', function() {
-        if($scope.currentStation) {
+
+        if(!$rootScope.currentStation){
+          $scope.visible = false;
+          console.log("set to false");
+          return;
+        }
+        if($rootScope.currentStation) {
           $scope.loadStation($rootScope.currentStation);
         }
       });
       if(!$rootScope.currentStation){
         $scope.visible = false;
+        console.log("set to false");
         return;
       }
       $scope.loadStation($rootScope.currentStation);
@@ -36,11 +43,22 @@ appControllers
     };
 
     $scope.loadData = function() {
-      RoutesService.getRoutesForStation($scope.station.station_id).then(function(data){
+      if($scope.station.isBikeStation){
+        console.log("Asta-i de bike-uri.");
+        console.log($scope.visible);
+
+        return;
+      }
+
+      RoutesService.getRoutesForStation($scope.station.station_id).then(function (data) {
 
         console.log("got routes for station", data);
         $scope.lines = data.data.lines;
+        if($scope.lines.length == 0){
+          $scope.visible = false;
+        }
       });
+
     };
     $scope.closeMe = function(){
       $scope.lines = [];

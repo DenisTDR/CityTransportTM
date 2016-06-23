@@ -110,6 +110,7 @@ appControllers
       }, 100);
     };
     $scope.init();
+<<<<<<< refs/remotes/tdr/master
 
     $scope.oldZoom = $scope.map.zoom;
 
@@ -119,19 +120,25 @@ appControllers
       $scope.stations = stations;
       var viz = [];
 
+=======
+    var showAutoStations = function (stations) {
+>>>>>>> bike stations in main map
       stations.forEach(function (station, i) {
 
 
         if (station.lat && station.lng){
 
+<<<<<<< refs/remotes/tdr/master
 
           if($scope.comasat && station.junction_name && viz[station.junction_name])
             return;
 
           viz[station.junction_name] = true;
 
+=======
+>>>>>>> bike stations in main map
             var iconUrl =  switchMeans();
-          
+
             var marker = new google.maps.Marker(
                 {
                   position: {lat: station.lat, lng: station.lng},
@@ -143,6 +150,31 @@ appControllers
               $scope.markers.push(marker);
               marker.setMap($scope.map.control.getGMap());
               marker.addListener('click', $scope.markerClick);
+        } else {
+          // console.log(station.lat);
+          // console.log(station.lng);
+        }
+      });
+    };
+    var showBikeStations = function(stations) {
+      console.log("Show bike stationssss:", stations);
+      stations.forEach(function (station, i) {
+        if (station.lat && station.lng){
+
+          var iconUrl =  switchMeans();
+
+          var marker = new google.maps.Marker(
+            {
+              position: {lat: station.lat, lng: station.lng},
+              title: station.friendly_name,
+              icon: iconUrl
+            }
+          );
+          station.isBikeStation = true;
+          marker.station = station;
+          $scope.markers.push(marker);
+          marker.setMap($scope.map.control.getGMap());
+          // marker.addListener('click', $scope.markerClick);
         } else {
           // console.log(station.lat);
           // console.log(station.lng);
@@ -177,7 +209,7 @@ appControllers
           // console.log(end);
           // console.log(start);
           // $scope.getDirections(start, end, transportType);
-          showStations(stations);
+          showAutoStations(stations);
         });
     };
     showRoute();
@@ -189,17 +221,23 @@ appControllers
       console.log($scope.markers.length);
       var tt = $scope.selectedTT;
       if(tt == "bus"){
-        tt = "bus,trolley";
+        tt = "bus";
       }
 
-      if(tt == "") {
-        console.log("getall");
-        StationsService.getAll().then(gotStations);
+      switch (tt){
+        case "":
+          console.log("getall");
+          StationsService.getAll().then(gotStations);
+          break;
+        case "bicycle":
+          StationsService.getBikeStations().then(gotStations);
+          break;
+        default:
+          console.log("get");
+          StationsService.get(tt).then(gotStations);
+          break;
       }
-      else{
-        console.log("get");
-        StationsService.get(tt).then(gotStations);
-      }
+
     };
 
     var gotStations = function(data){
@@ -208,8 +246,12 @@ appControllers
         marker.setMap(null);
       });
       $scope.markers = [];
-      var stations = data.data.stations;
-      showStations(stations);
+      if(data.data.stations){
+        showAutoStations(data.data.stations);
+      }
+      else if(data.data.bike_stations){
+        showBikeStations(data.data.bike_stations);
+      }
     };
 
     $scope.$on('$ionicView.leave', function() {
@@ -229,6 +271,10 @@ appControllers
       $scope.selectedTTChanged();
       console.log("toggleTT in main map: " + tt);
       $scope.selectedTT = tt;
+
+
+      $rootScope.currentStation = null;
+      $rootScope.$broadcast('loadCurrentStation');
     });
 
     var onSuccess = function(position) {

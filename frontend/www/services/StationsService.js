@@ -13,5 +13,7 @@ app.service("StationsService", function ($http) {
   this.getNearest = function(lat, lng, count) {
     return $http.get(backendApi + "get_nearby_stations?lat=" + lat + "&lng=" + lng + "&count=" + count);
   };
-
+  this.getBikeStations = function() {
+    return $http.get(backendApi + "get_bike_stations");
+  }
 });
