@@ -10,6 +10,7 @@ appControllers
     console.log("map controller loaded");
 
     $scope.map = { control: {}, center: { latitude: 45.745139, longitude: 21.241582 }, zoom: 15 };
+
     $scope.myPosition = {latitude: 45.7456645, longitude: 21.2411096};
     $scope.visible = false;
     $scope.selectedTT = "bus";
@@ -84,13 +85,51 @@ appControllers
       setTimeout(function(){
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
         document.getElementsByTagName("ion-header-bar")[1].getElementsByClassName('title')[0].innerHTML = "City Transport Timișoara";
+        google.maps.event.addDomListener($scope.map.control.getGMap(),'zoom_changed', function() {
+          var zoom =  $scope.map.control.getGMap().getZoom();
+          console.log(zoom);
+            if(zoom<=16 && $scope.oldZoom>=16){
+                $scope.markers.forEach(function(marker){
+                marker.setMap(null);
+              });
+                $scope.comasat = true;
+                showStations($scope.stations);
+               console.log("cms changed to "+ $scope.comasat);
+            }
+            else if(zoom>=16 && $scope.oldZoom<=16){
+                $scope.markers.forEach(function(marker){
+                marker.setMap(null);
+              });
+                 $scope.comasat = false;
+                 showStations($scope.stations);
+                  console.log("cms changed to "+ $scope.comasat);
+             }
+      
+             $scope.oldZoom = zoom;
+        });
       }, 100);
     };
     $scope.init();
+
+    $scope.oldZoom = $scope.map.zoom;
+
     var showStations = function (stations) {
+      if(stations==null)
+        return;
+      $scope.stations = stations;
+      var viz = [];
+
       stations.forEach(function (station, i) {
+
+
         if (station.lat && station.lng){
-          
+
+
+          if($scope.comasat && station.junction_name && viz[station.junction_name])
+            return;
+
+          viz[station.junction_name] = true;
+
             var iconUrl =  switchMeans();
           
             var marker = new google.maps.Marker(
