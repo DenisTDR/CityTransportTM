@@ -93,7 +93,7 @@ appControllers
                 marker.setMap(null);
               });
                 $scope.comasat = true;
-                showStations($scope.stations);
+               showAutoStations($scope.stations);
                console.log("cms changed to "+ $scope.comasat);
             }
             else if(zoom>=16 && $scope.oldZoom<=16){
@@ -101,42 +101,34 @@ appControllers
                 marker.setMap(null);
               });
                  $scope.comasat = false;
-                 showStations($scope.stations);
+                showAutoStations($scope.stations);
                   console.log("cms changed to "+ $scope.comasat);
              }
-      
+
              $scope.oldZoom = zoom;
         });
       }, 100);
     };
     $scope.init();
-<<<<<<< refs/remotes/tdr/master
 
     $scope.oldZoom = $scope.map.zoom;
 
-    var showStations = function (stations) {
+    var showAutoStations = function (stations) {
       if(stations==null)
         return;
       $scope.stations = stations;
       var viz = [];
 
-=======
-    var showAutoStations = function (stations) {
->>>>>>> bike stations in main map
       stations.forEach(function (station, i) {
 
 
         if (station.lat && station.lng){
-
-<<<<<<< refs/remotes/tdr/master
 
           if($scope.comasat && station.junction_name && viz[station.junction_name])
             return;
 
           viz[station.junction_name] = true;
 
-=======
->>>>>>> bike stations in main map
             var iconUrl =  switchMeans();
 
             var marker = new google.maps.Marker(
