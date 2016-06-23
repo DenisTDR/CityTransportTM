@@ -9,16 +9,16 @@ import velo
 import boats
 
 cache_opts = {
-    'cache.type': 'memory',
-    'cache.lock_dir': 'cache/lock'
+	'cache.type': 'memory',
+	'cache.lock_dir': 'cache/lock'
 }
 
 transient = CacheManager(**parse_cache_config_options(cache_opts))
 
 cache_opts = {
-    'cache.type': 'file',
-    'cache.data_dir': 'cache/data',
-    'cache.lock_dir': 'cache/lock'
+	'cache.type': 'file',
+	'cache.data_dir': 'cache/data',
+	'cache.lock_dir': 'cache/lock'
 }
 
 persistent = CacheManager(**parse_cache_config_options(cache_opts))
@@ -29,9 +29,9 @@ known_lines_csv = "Timisoara Public Transport - Linii.csv"
 
 @transient.cache('all_stations', expire=3600 * 24)
 def get_stations() -> Dict[str, ratt.Station]:
-	raw_name_to_station = { station.raw_name: station for station in importer.parse_stations_from_csv(known_stations_csv) }
+	raw_name_to_station = {station.raw_name: station for station in importer.parse_stations_from_csv(known_stations_csv)}
 	get_junction_stations.junction_name_to_stations = defaultdict(list)
-	get_station.station_id_to_station = { }
+	get_station.station_id_to_station = {}
 	for station in raw_name_to_station.values():
 		get_station.station_id_to_station[station.station_id] = station
 		if station.junction_name:
@@ -46,6 +46,7 @@ def get_station(station_id: int) -> ratt.Station:
 
 	return get_station.station_id_to_station[station_id]
 
+
 get_station.station_id_to_station = None
 
 
@@ -54,6 +55,7 @@ def get_junction_stations(junction_name: str) -> Sequence[ratt.Station]:
 		get_stations()
 
 	return get_junction_stations.junction_name_to_stations[junction_name]
+
 
 get_junction_stations.junction_name_to_stations = None
 
@@ -64,13 +66,14 @@ def get_stations_by_type(line_type: str) -> Sequence[ratt.Station]:
 
 	return get_stations_by_type.line_type_to_stations[line_type]
 
+
 get_stations_by_type.line_type_to_stations = None
 
 
 @transient.cache('all_lines', expire=3600 * 24)
 def get_lines() -> Sequence[ratt.Line]:
 	lines = importer.parse_lines_from_csv(known_lines_csv)
-	get_line.line_id_to_line = { line.line_id: line for line in lines }
+	get_line.line_id_to_line = {line.line_id: line for line in lines}
 	return lines
 
 
@@ -79,6 +82,7 @@ def get_line(line_id: int) -> ratt.Line:
 		get_lines()
 
 	return get_line.line_id_to_line[line_id]
+
 
 get_line.line_id_to_line = None
 
@@ -109,12 +113,14 @@ def get_station_routes(station_id: int) -> Sequence[ratt.Route]:
 	if not get_station_routes.station_id_to_routes:
 		get_routes()
 
-	return get_station_routes.station_id_to_routes[station_id] if station_id in get_station_routes.station_id_to_routes else []
+	return get_station_routes.station_id_to_routes[
+		station_id] if station_id in get_station_routes.station_id_to_routes else []
+
 
 get_station_routes.station_id_to_routes = None
 
 
-@transient.cache('line_arrivals', expire=30)
+@transient.cache('line_arrivals', expire=40)
 def get_arrivals(line_id: int):
 	return ratt.get_arrivals_from_infotrafic(line_id, get_stations())
 
