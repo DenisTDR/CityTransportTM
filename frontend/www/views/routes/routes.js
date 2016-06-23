@@ -12,7 +12,7 @@ appControllers
     $scope.visible = false;
 
     $scope.init = function () {
-      $rootScope.$on("toggleTT", $scope.toggleTT);
+      //$rootScope.$on("toggleTT", $scope.toggleTT);
       RoutesService.getAll().then(function (data) {
         console.log(data);
         $scope.routes = data.data.lines;
@@ -43,8 +43,9 @@ appControllers
 
     $scope.refreshVisibleRoutes = function() {
       $scope.routes.forEach(function (route) {
-        route.visible = ((route.line_type == 'bus' || route.line_type == 'trolley') && $scope.selectedTT == 'bus')
-        || (route.line_type == 'tram' && $scope.selectedTT == 'tram');
+        route.visible = route.line_type == $scope.selectedTT;
+          //((route.line_type == 'bus' || route.line_type == 'trolley') && $scope.selectedTT == 'bus')
+        //|| (route.line_type == 'tram' && $scope.selectedTT == 'tram');
       });
       var c = 0;
       for(var i = 0; i < $scope.routes.length; i++) {
