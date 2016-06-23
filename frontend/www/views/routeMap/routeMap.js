@@ -11,6 +11,7 @@ appControllers
     $scope.map = { control: {}, center: { latitude: 45.745139, longitude: 21.241582 }, zoom: 13 };
     $scope.myPosition = {latitude: 45.7456645, longitude: 21.2411096};
     $scope.markers = [];
+    $scope.lastPath = null;
 
     $scope.$on('loadRouteOnMap', function(){
       var selectedRoute = $rootScope.selectedRoute;
@@ -41,10 +42,10 @@ appControllers
 
       directionsService.route(request, function (response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-          directionsDisplay.setDirections(response);
-          directionsDisplay.setMap($scope.map.control.getGMap());
-          directionsDisplay.setOptions({ suppressMarkers: true });
-          directionsDisplay.setPanel(document.getElementById('directionsList'));
+          //directionsDisplay.setDirections(response);
+          //directionsDisplay.setMap($scope.map.control.getGMap());
+          //directionsDisplay.setOptions({ suppressMarkers: true });
+          //directionsDisplay.setPanel(document.getElementById('directionsList'));
         } else {
           console.log(response, status);
           console.log('Google routes unsuccesfull!');
@@ -56,6 +57,9 @@ appControllers
         marker.setMap(null);
       });
       $scope.markers = [];
+      var coords = [];
+      var bounds = new google.maps.LatLngBounds();
+
       stations.forEach(function (station, i) {
         console.log(station);
         if (station.lat && station.lng) {
@@ -72,9 +76,25 @@ appControllers
                 }
               );
               $scope.markers.push(marker);
-              marker.setMap($scope.map.control.getGMap())
+              marker.setMap($scope.map.control.getGMap());
+
+          bounds.extend(marker.getPosition());
+          coords.push({lat: station.lat, lng: station.lng});
         }
-      })
+      });
+      var routePath = new google.maps.Polyline({
+        path: coords,
+        geodesic: true,
+        strokeColor: '#777',
+        strokeOpacity: 1.0,
+        strokeWeight: 4
+      });
+      if($scope.lastPath){
+        $scope.lastPath.setMap(null);
+      }
+      $scope.lastPath = routePath;
+      routePath.setMap($scope.map.control.getGMap());
+      $scope.map.control.getGMap().fitBounds(bounds);
     };
 
     $scope.loadRoute = function(route) {

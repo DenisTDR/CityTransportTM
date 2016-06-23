@@ -123,6 +123,15 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
         }
       }
     })
+    .state('view.landingpage', {
+      url: '/landingpage',
+      views: {
+        'view-landingpage': {
+          templateUrl: 'views/landingpage/landingpage.html',
+          controller: 'LandingPageController'
+        }
+      }
+    })
   ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/view/map');
