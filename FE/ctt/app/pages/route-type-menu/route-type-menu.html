@@ -1,0 +1,22 @@
+
+<div class="route-type-menu">
+  <!--<div><ion-icon name="bus"></ion-icon></div>-->
+  <!--<div><span class="fa fa-bus"></span></div>-->
+  <!--<div><span class="fa fa-train"></span></div>-->
+  <!--<div><ion-icon name="bicycle"></ion-icon></div>-->
+  <!--&lt;!&ndash;<div><span class="fa fa-bicycle"></span></div>&ndash;&gt;-->
+  <!--<div><ion-icon name="boat"></ion-icon></div>-->
+  <div *ngFor="let type of Globals.routeTypes"
+       (click)="activateType(type)"
+       class="{{type.name}}"
+        [class.active]="type.active"
+        [style.background]="type.active?type.activeColor:''">
+    <div *ngIf="type.icon.type == 'ion'">
+      <ion-icon name="{{type.icon.name}}"></ion-icon>
+    </div>
+    <div *ngIf="type.icon.type == 'fa'">
+      <span class="fa fa-{{type.icon.name}}"></span>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+route-type-menu {
+  background: red;
+}
+
+.route-type-menu {
+  >div {
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+    flex: 1;
+    color: #666;
+  }
+  >div.active {
+    color: #eee;
+  }
+  font-size: 2em;
+  background: #dddddd;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+

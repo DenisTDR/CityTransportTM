@@ -6,10 +6,12 @@
 
 <ion-content padding class="home">
   <h2>Welcome to Rute :)</h2>
-  <p>
+  <div>type: {{selectedRouteType.name}}</div>
+  <div>Ruta 1</div>
+  <div>Ruta 2</div>
+  <div>Ruta 3</div>
+  <div>Ruta 4</div>
+  <div>Ruta 5</div>
 
-  </p>
-  <p>
-
-  </p>
+  <route-type-menu [selectedRouteType]="selectedRouteType" (selectedRouteTypeChanged)="selectedRouteTypeChanged($event)"></route-type-menu>
 </ion-content>
