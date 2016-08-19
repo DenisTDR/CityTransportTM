@@ -3,6 +3,7 @@ import {HomePage} from '../home/home';
 import {AboutPage} from '../about/about';
 import {ContactPage} from '../contact/contact';
 import {RoutesListPage} from '../routes-list/routes-list';
+import {MainMapPage} from "../main-map/main-map";
 
 @Component({
   templateUrl: 'build/pages/tabs/tabs.html'
@@ -13,6 +14,7 @@ export class TabsPage {
   private homePageTab: any;
   private aboutPageTab: any;
   private contactPageTab: any;
+  private mainMapPageTab: any;
 
   constructor() {
     // this tells the tabs component which Pages
@@ -21,5 +23,6 @@ export class TabsPage {
     this.homePageTab = HomePage;
     this.aboutPageTab = AboutPage;
     this.contactPageTab = ContactPage;
+    this.mainMapPageTab = MainMapPage;
   }
 }

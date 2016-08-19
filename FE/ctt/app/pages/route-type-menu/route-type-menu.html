@@ -1,11 +1,12 @@
 
-<div class="route-type-menu">
+<div class="route-type-menu" [hidden]="!visible">
   <!--<div><ion-icon name="bus"></ion-icon></div>-->
   <!--<div><span class="fa fa-bus"></span></div>-->
   <!--<div><span class="fa fa-train"></span></div>-->
   <!--<div><ion-icon name="bicycle"></ion-icon></div>-->
   <!--&lt;!&ndash;<div><span class="fa fa-bicycle"></span></div>&ndash;&gt;-->
   <!--<div><ion-icon name="boat"></ion-icon></div>-->
+
   <div *ngFor="let type of Globals.routeTypes"
        (click)="activateType(type)"
        class="{{type.name}}"
@@ -15,7 +16,7 @@
       <ion-icon name="{{type.icon.name}}"></ion-icon>
     </div>
     <div *ngIf="type.icon.type == 'fa'">
-      <span class="fa fa-{{type.icon.name}}"></span>
+      <span class="fa fa-{{type.icon.name}}"></span>{{someProp}}
     </div>
   </div>
 </div>

@@ -10,12 +10,15 @@
   <link ios-href="build/css/app.ios.css" rel="stylesheet">
   <link md-href="build/css/app.md.css" rel="stylesheet">
   <link wp-href="build/css/app.wp.css" rel="stylesheet">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' *; object-src 'self'; style-src 'self' 'unsafe-inline'; media-src *">
 </head>
 <body>
 
   <!-- This is Ionic's root component, where the app will load -->
   <ion-app></ion-app>
 
+  <!--<script src="http://maps.google.com/maps/api/js"></script>-->
+  <script src="google.maps.api.js"></script>
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
   <!-- Polyfill needed for platforms without Promise and Collection support -->

@@ -55,7 +55,7 @@ export class Globals {
       activeColor: "#6ed3cf"
     }
   ];
-  static selectedRouteType: RouteType = Globals.routeTypes[0];
+  static selectedRouteType: RouteType = Globals.routeTypes[2];
 
   private static init: string = Globals.initMethod();
 
@@ -70,6 +70,8 @@ export class Globals {
     });
     console.log("selected routeType => " + type.name);
     type.active = true;
+    Globals.selectedRouteType = type;
+    // console.log("end setSelectedRouteType");
   }
 
   static setSelectedRouteTypeName (typeName: string) {

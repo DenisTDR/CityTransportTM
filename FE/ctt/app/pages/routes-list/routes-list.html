@@ -13,5 +13,7 @@
   <div>Ruta 4</div>
   <div>Ruta 5</div>
 
-  <route-type-menu [selectedRouteType]="selectedRouteType" (selectedRouteTypeChanged)="selectedRouteTypeChanged($event)"></route-type-menu>
+  <route-type-menu
+    (selectedRouteTypeChanged)="selectedRouteTypeChanged($event)"
+  ></route-type-menu>
 </ion-content>
