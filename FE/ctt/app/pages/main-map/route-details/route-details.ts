@@ -2,9 +2,6 @@
  * Created by tdr on 19/08/16.
  */
 
-
-
-
 import {Component} from "@angular/core";
 import {IONIC_DIRECTIVES, NavController} from "ionic-angular";
 @Component({

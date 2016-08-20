@@ -1,11 +1,21 @@
 
 #map_canvas {
   background: black;
-  position: absolute;
-  top: 45px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 3px solid red;
+  width: 100%;
+  border: 1px solid green;
   color: green;
+}
+ion-content.map>scroll-content {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width-element {
+  width: 100%;
+  position: relative;
+}
+
+#map_canvas {
+  flex-grow: 1;
 }

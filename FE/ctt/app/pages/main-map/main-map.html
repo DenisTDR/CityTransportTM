@@ -2,20 +2,26 @@
   <ion-navbar>
     <ion-title>Map</ion-title>
     <ion-buttons end>
-      <button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+      <button (click)="routeTypeMenuVisible = !routeTypeMenuVisible"><ion-icon name="construct"></ion-icon></button>
+      <button (click)="routeDetailsVisible = !routeDetailsVisible"><ion-icon name="bicycle"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="map">
-  <div>this is the map:</div>{{test}}
-  <route-details></route-details>
+
+  <!--[style.bottom]="test"-->
   <div id="map_canvas"
-       [style.bottom]="test"
-  >or not?</div>
-  <route-type-menu [hidden]="!routeTypeMenuVisible"
+  >this is the map, or not?</div>
+  <route-details
+    class="full-width-element"
+    [hidden]="!routeDetailsVisible"
+  ></route-details>
+  <route-type-menu
+    class="full-width-element"
+    [hidden]="!routeTypeMenuVisible"
                    (selectedRouteTypeChanged)="selectedRouteTypeChanged($event)"
-                   (viewChanged)="routeTypeMenuViewChanged($event)"
                    #routeTypeMenu>
   </route-type-menu>
+
 </ion-content>

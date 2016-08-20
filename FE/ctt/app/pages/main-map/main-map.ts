@@ -17,10 +17,12 @@ import {Globals} from "../globals";
 export class MainMapPage {
   private map: any;
   private routeTypeMenuVisible: boolean;
+  private routeDetailsVisible: boolean;
   private Globals: Globals;
   private test: string;
   @ViewChild('routeTypeMenu') routeTypeMenu : RouteTypeMenu;
   constructor(private navCtrl: NavController, private platform: Platform) {
+    this.routeDetailsVisible = true;
     this.routeTypeMenuVisible = true;
     this.Globals = Globals;
     this.test = "150px";
@@ -29,24 +31,23 @@ export class MainMapPage {
   ngOnInit () {
     console.log("ngOnInit in MainMapPage");
 
-    this.routeTypeMenu.someProp = "b";
     let rtm = this.routeTypeMenu;
     // return;
     // setInterval(function() {
     //     rtm.setVisible(!rtm.visible);
     // }, 500);
+    this.initMap();
   }
   ionViewDidEnter() {
     console.log("ionViewLoaded in MainMapPage");
-    // this.initMap();
 
   }
   initMap() {
     console.log("init map in MainMapPage!");
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+    let latLng = new google.maps.LatLng(45.7491624, 21.2359002);
     let mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 17,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var mapElement = document.getElementById("map_canvas");
@@ -55,7 +56,7 @@ export class MainMapPage {
   }
 
   addMarker() {
-    this.routeTypeMenu.setVisible(!this.routeTypeMenu.visible);
+
 
     // let marker = new google.maps.Marker({
     //   map: this.map,
@@ -67,19 +68,14 @@ export class MainMapPage {
 
   }
 
+  toggleRouteTypeMenu() {
+    this.routeTypeMenuVisible = !this.routeTypeMenuVisible;
+  }
+
   selectedRouteTypeChanged(arg) {
     // this.selectedRouteType = arg;
     console.log("in MainMapPage selectedRouteTypeChanged: ", arg);
 
-  }
-
-  routeTypeMenuViewChanged(routeTypeMenu: RouteTypeMenu) {
-    if(!routeTypeMenu.visible) {
-      this.test = '150px';
-    }
-    else {
-      this.test = '0';
-    }
   }
 }
 
