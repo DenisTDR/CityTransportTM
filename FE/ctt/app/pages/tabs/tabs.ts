@@ -11,18 +11,12 @@ import {MainMapPage} from "../main-map/main-map";
 export class TabsPage {
 
   private routesListPage: any;
-  private homePageTab: any;
-  private aboutPageTab: any;
-  private contactPageTab: any;
   private mainMapPageTab: any;
 
   constructor() {
     // this tells the tabs component which Pages
     // should be each tab's root Page
     this.routesListPage = RoutesListPage;
-    this.homePageTab = HomePage;
-    this.aboutPageTab = AboutPage;
-    this.contactPageTab = ContactPage;
     this.mainMapPageTab = MainMapPage;
   }
 }

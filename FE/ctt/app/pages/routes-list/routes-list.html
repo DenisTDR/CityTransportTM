@@ -4,16 +4,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="home">
-  <h2>Welcome to Rute :)</h2>
-  <div>type: {{selectedRouteType.name}}</div>
-  <div>Ruta 1</div>
-  <div>Ruta 2</div>
-  <div>Ruta 3</div>
-  <div>Ruta 4</div>
-  <div>Ruta 5</div>
+<ion-content padding class="routes-list">
+
+  <div class="flexOne bordered">Bla Bla</div>
 
   <route-type-menu
+    class="full-width-element"
     (selectedRouteTypeChanged)="selectedRouteTypeChanged($event)"
   ></route-type-menu>
 </ion-content>

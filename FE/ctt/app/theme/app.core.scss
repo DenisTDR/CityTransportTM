@@ -17,6 +17,14 @@
 
 @import "../pages/main-map/main-map";
 
+@import "../pages/routes-list/routes-list";
+
 @import "font-awesome";
 
 [hidden] { display: none !important;}
+
+
+.full-width-element {
+  width: 100%;
+  position: relative;
+}

@@ -60,7 +60,7 @@ export class Globals {
   private static init: string = Globals.initMethod();
 
   static initMethod(): string {
-    Globals.setSelectedRouteTypeName("bike");
+    Globals.setSelectedRouteTypeName("tram");
     return null;
   }
 

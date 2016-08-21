@@ -3,12 +3,10 @@ import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar, GoogleMap} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
 
-
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
-
   private rootPage: any;
   private map: any;
 
