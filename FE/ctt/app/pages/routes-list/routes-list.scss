@@ -15,3 +15,7 @@ ion-content.routes-list>scroll-content {
 .flexOne {
   flex: 1;
 }
+
+.routes-list-page scroll-content{
+  overflow-y: auto;
+}

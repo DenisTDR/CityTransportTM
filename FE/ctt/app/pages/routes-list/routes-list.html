@@ -4,9 +4,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="routes-list">
+<ion-content padding class="routes-list" scroll="false">
 
-  <div class="flexOne bordered">Bla Bla</div>
+  <ion-scroll class="flexOne bordered">
+    <div *ngIf="loading">Loading ...</div>
+    <ion-list *ngIf="!loading">
+      <!--<div>date: cnt: {{lines.length}}</div>-->
+      <ion-item *ngFor="let line of lines">
+        {{line.rawName}}
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
 
   <route-type-menu
     class="full-width-element"
