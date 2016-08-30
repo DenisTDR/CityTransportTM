@@ -10,10 +10,12 @@ import {Globals} from '../globals';
 import {RouteType} from "../../types/routeType.interface";
 import {ApiService} from "../../services/api.service";
 import {Line} from "../../types/line.interface";
+import {MapPartial} from "../partials/map-partial/map-partial";
+
 
 @Component({
   templateUrl: 'build/pages/routes-list/routes-list.html',
-  directives: [RouteTypeMenu],
+  directives: [RouteTypeMenu, MapPartial],
   providers: [ApiService]
 })
 export class RoutesListPage {
@@ -43,24 +45,24 @@ export class RoutesListPage {
 
   getRoutes() {
     // this.gotRoutes(null);
-    // return;
-    if(this.loading) return;
-    this.loading = true;
-    console.log("getting routes for: " + this.selectedRouteType.name);
-    this.apiService.getRoutes(this.selectedRouteType)
-      .subscribe(
-        data => {
-          console.log("data");
-          this.gotRoutes(data.json().data);
-        },
-        err => {
-          console.log("err", err);
-        },
-        () => {
-          console.log('Random Quote Complete');
-          this.loading = false;
-        }
-      );
+
+    // if(this.loading) return;
+    // this.loading = true;
+    // console.log("getting routes for: " + this.selectedRouteType.name);
+    // this.apiService.getRoutes(this.selectedRouteType)
+    //   .subscribe(
+    //     data => {
+    //       console.log("data");
+    //       this.gotRoutes(data.json().data);
+    //     },
+    //     err => {
+    //       console.log("err", err);
+    //     },
+    //     () => {
+    //       console.log('Random Quote Complete');
+    //       this.loading = false;
+    //     }
+    //   );
 
   }
   gotRoutes(data: any) {
@@ -91,6 +93,7 @@ export class RoutesListPage {
     if(this.selectedRouteType && this.selectedRouteType.name == arg.name) return;
     this.selectedRouteType = arg;
     console.log("in RouteListPage selectedRouteTypeChanged: ", arg);
+
     this.getRoutes();
   }
 }

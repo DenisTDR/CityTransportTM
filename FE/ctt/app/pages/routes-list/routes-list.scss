@@ -19,3 +19,8 @@ ion-content.routes-list>scroll-content {
 .routes-list-page scroll-content{
   overflow-y: auto;
 }
+
+.noPadding,
+.noPadding > scroll-content {
+  padding: 0 !important;
+}
