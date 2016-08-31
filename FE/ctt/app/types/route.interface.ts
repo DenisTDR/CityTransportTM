@@ -5,8 +5,7 @@ import {Line} from "./line.interface";
  */
 
 export class Route {
-  id: number;
-  line: Line;
+  id: string;
   stations: Station[];
 
   constructor() {
@@ -14,10 +13,10 @@ export class Route {
   }
 
   getFirstStation() : Station {
-    return this.stations[0];
+    return (this.stations && this.stations.length) ? this.stations[0] : null;
   }
   getLastStation() : Station {
-    return this.stations[this.stations.length - 1];
+    return (this.stations && this.stations.length) ? this.stations[this.stations.length - 1] : null;
   }
 
 }

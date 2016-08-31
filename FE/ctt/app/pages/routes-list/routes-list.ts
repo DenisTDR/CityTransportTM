@@ -72,9 +72,9 @@ export class RoutesListPage {
         this.lines.push({
           id: 22 + i,
           name: "123" + i,
-          rawName: "B" + i,
+          // rawName: "B" + i,
           routes: [],
-          type: "bus"
+          type: Globals.routeTypes[0]
         });
       }
 

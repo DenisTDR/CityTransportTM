@@ -4,19 +4,20 @@ import {AboutPage} from '../about/about';
 import {ContactPage} from '../contact/contact';
 import {RoutesListPage} from '../routes-list/routes-list';
 import {MainMapPage} from "../main-map/main-map";
+import {RoutesTablePage} from "../routes-table/routes-table";
 
 @Component({
   templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class TabsPage {
 
-  private routesListPage: any;
+  private routesTablePage: any;
   private mainMapPageTab: any;
 
   constructor() {
     // this tells the tabs component which Pages
     // should be each tab's root Page
-    this.routesListPage = RoutesListPage;
+    this.routesTablePage = RoutesTablePage;
     this.mainMapPageTab = MainMapPage;
   }
 }

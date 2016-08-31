@@ -31,6 +31,8 @@ export class RouteTypeMenu {
     if(type.active) return;
     console.log("clicked: " + type.name);
     Globals.setSelectedRouteType(type);
-    this.selectedRouteTypeChanged.emit(type);
+    if(this.selectedRouteTypeChanged) {
+      this.selectedRouteTypeChanged.emit(type);
+    }
   }
 }

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Rute</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="routes-list" scroll="false">
+  <ion-scroll class="flexOne bordered noPadding">
+    <div *ngIf="!lines || !lines.length">
+      Nu sunt rute disponibile
+    </div>
+    <div *ngIf="lines && lines.length">
+      <div *ngFor="let lineBag of lines">
+        <div>{{lineBag.type.name}}</div>
+        <div *ngFor="let line of lineBag.lines">
+          * {{line.name}}
+        </div>
+      </div>
+    </div>
+  </ion-scroll>
+
+  <route-type-menu
+    class="full-width-element"
+    (selectedRouteTypeChanged)="selectedRouteTypeChanged($event)"
+  ></route-type-menu>
+</ion-content>
