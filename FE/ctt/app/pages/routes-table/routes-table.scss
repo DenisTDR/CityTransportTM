@@ -1,0 +1,64 @@
+.routes-list ion-scroll {
+  background-color: #f1f1f1;
+}
+
+.routes-list .scroll-zoom-wrapper {
+  padding: 2% 10%;
+}
+
+.routes-list .line-type {
+  text-transform: uppercase;
+  font-size:2.4 em;
+  //font-weight: 200;
+  line-height:3em;
+  color:#555;
+}
+
+.lines-table{
+  width: 100%;
+  //margin-bottom:1em;
+}
+
+.routes-list .line-number {
+  position:relative;
+  width:3em;
+  height:3em;
+  text-align: center;
+  display: inline-block;
+  margin:1%;
+}
+
+.routes-list .line-name {
+  position: absolute;
+  color:white;
+  float:left;
+  z-index:10;
+  top:0;
+  left:0;
+  line-height: 2.4em;
+  font-size: 1.2em;
+  font-weight: 500;
+  width:100%;;
+  text-align:center
+}
+
+// Colors for the lines
+
+.routes-list .line-number-bus i{
+  color:rgb(230, 39, 57);
+}
+
+.routes-list .line-number-trolley i{
+  color:rgb(255, 177, 51);
+}
+
+.routes-list .line-number-tram i{
+  color:rgb(85, 85, 85);
+}
+.routes-list .line-number-bike i{
+  color:rgb(138, 101, 197);
+}
+
+.routes-list .line-number-boat i{
+  color:rgb(110, 211, 207);
+}

@@ -79,7 +79,7 @@ var getMockLines = function(): Line[] {
     }
     var l = {
       id: "l" + i,
-      name: "Linia " + (i + 1),
+      name: "" + (i + 1),
       routes: [r1, r2],
       type: Globals.routeTypes[Math.floor(i/groupBy)]
     };

@@ -5,15 +5,18 @@
 </ion-header>
 
 <ion-content padding class="routes-list" scroll="false">
-  <ion-scroll class="flexOne bordered noPadding">
+  <ion-scroll class="flexOne noPadding">
     <div *ngIf="!lines || !lines.length">
       Nu sunt rute disponibile
     </div>
     <div *ngIf="lines && lines.length">
       <div *ngFor="let lineBag of lines">
-        <div>{{lineBag.type.name}}</div>
-        <div *ngFor="let line of lineBag.lines">
-          * {{line.name}}
+        <div class="line-type">{{lineBag.type.name}}</div>
+        <div class="lines-table">
+          <div *ngFor="let line of lineBag.lines" class="line-number line-number-{{lineBag.type.name}}">
+            <i class="fa fa-circle fa-3x" ></i>
+            <span class="line-name">{{line.name}}</span>
+          </div>
         </div>
       </div>
     </div>
