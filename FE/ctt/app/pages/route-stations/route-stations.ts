@@ -5,13 +5,14 @@ import {NavController, Platform, NavParams} from 'ionic-angular';
 
 import {Line} from "../../types/line.interface";
 import {ApiService} from "../../services/api.service";
+import {IONIC_DIRECTIVES} from 'ionic-angular';
 /**
  * Created by Aida on 9/5/2016.
  */
 
 @Component({
   templateUrl: 'build/pages/route-stations/route-stations.html',
-  directives: [RouteTypeMenu, MapPartial],
+  directives: [RouteTypeMenu, MapPartial, IONIC_DIRECTIVES],
   providers: [ApiService]
 })
 export class RouteStationsPage {

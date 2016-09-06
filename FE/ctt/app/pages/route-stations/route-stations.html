@@ -5,6 +5,17 @@
 </ion-header>
 
 <ion-content padding class="routes-list" scroll="false">
-  continut<br/>
-  {{selectedLineId}}
+  <!-- <a class="button button-icon icon ion-arrow-swap" (click)="toggleDirections()"></a> -->
+
+  <ion-icon name="swap" (click)="toggleDirections()"></ion-icon>
+
+  <div *ngIf="line == null">
+      Nu sunt rute disponibile
+    </div>
+    <div *ngIf="line">
+      <div *ngFor="let station of line.routes[currentDirection].stations">
+        <div class="station-name">{{station.name}}</div>
+      </div>
+    </div>
+
 </ion-content>
