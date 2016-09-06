@@ -1,7 +1,7 @@
 import {MapPartial} from "../partials/map-partial/map-partial";
 import {RouteTypeMenu} from "../route-type-menu/route-type-menu";
 import {Component} from "@angular/core";
-import {NavController, Platform} from 'ionic-angular';
+import {NavController, Platform, NavParams} from 'ionic-angular';
 
 import {Line} from "../../types/line.interface";
 import {ApiService} from "../../services/api.service";
@@ -15,13 +15,13 @@ import {ApiService} from "../../services/api.service";
   providers: [ApiService]
 })
 export class RouteStationsPage {
-
   private selectedLineId: string;
   private line: Line;
   private currentDirection;
-  constructor(private navCtrl: NavController, private apiService: ApiService) {
+  constructor(private navCtrl: NavController, private apiService: ApiService, navParams: NavParams) {
     console.log("RouteStationsPage constructor");
-    this.selectedLineId = "l14";
+    this.selectedLineId = navParams.get('selectedLineId');
+    console.log("with: " + this.selectedLineId);
     // this.routeTypeMenu = RouteTypeMenu;
     this.currentDirection = 0;
   }

@@ -7,13 +7,15 @@
 <ion-content padding class="routes-list" scroll="false">
   <ion-scroll class="flexOne noPadding">
     <div *ngIf="!lines || !lines.length">
-      Nu sunt rute disponibile
+      Se încarcă ...
     </div>
     <div *ngIf="lines && lines.length">
       <div *ngFor="let lineBag of lines">
         <div class="line-type">{{lineBag.type.name}}</div>
         <div class="lines-table">
-          <div *ngFor="let line of lineBag.lines" class="line-number line-number-{{lineBag.type.name}}">
+          <div *ngFor="let line of lineBag.lines"
+               class="line-number line-number-{{lineBag.type.name}}"
+               (click)="lineTap(line);">
             <i class="fa fa-circle fa-3x" ></i>
             <span class="line-name">{{line.name}}</span>
           </div>

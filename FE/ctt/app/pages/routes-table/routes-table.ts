@@ -7,6 +7,7 @@ import {Component} from "@angular/core";
 import {RouteType} from "../../types/routeType.interface";
 import {Line} from "../../types/line.interface";
 import {LinesBag} from "../../types/linesBag.interface";
+import {RouteStationsPage} from "../route-stations/route-stations";
 /**
  * Created by tdr on 30/08/16.
  */
@@ -66,8 +67,12 @@ export class RoutesTablePage {
     if(this.selectedRouteType && this.selectedRouteType.name == arg.name) return;
     this.selectedRouteType = arg;
     console.log("in RoutesTablePage selectedRouteTypeChanged: ", arg);
-
-
+  }
+  lineTap(line) {
+    console.log("line tapped: ", line);
+    this.navCtrl.push(RouteStationsPage, {
+      selectedLineId: line.id
+    });
   }
 
 
