@@ -52,7 +52,28 @@ export class ApiService {
 
     return observable;
   }
+
+  getLine(id: string): Observable<Line> {
+    console.log("get line din api service")
+    var observable = Observable.create(function(observer){
+      setTimeout(function(){
+        if(!this.mockLines)
+          this.mockLines = getMockLines();
+       for(var i=0;i<this.mockLines.length;i++){
+           if(this.mockLines[i].id==id){
+             observer.next(this.mockLines[i]);
+             return;
+           }
+        }
+      }, 500);
+    });
+    return observable;
+  }
+
+
 }
+
+
 
 var getMockLines = function(): Line[] {
   var sts = [];
