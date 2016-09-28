@@ -6,6 +6,7 @@ import {RouteType} from "./routeType.interface";
 
 export interface Line{
   id: number;
+  number: number;
   name: string;
   routes: Route[];
   type: RouteType;

@@ -4,18 +4,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="routes-list" scroll="false">
-
+<ion-content padding class="lines-table" scroll="false">
   <ion-scroll class="flexOne bordered noPadding">
+    12344444 f
     <div *ngIf="loading">Loading ...</div>
-    <ion-list *ngIf="!loading">
-      <!--<div>date: cnt: {{lines.length}}</div>-->
-      <ion-item *ngFor="let line of lines">
-        {{line.name}}
+    <ion-list *ngIf="!loading" style="font-size: 20px;">
+      <ion-item *ngFor="let lineBag of linesBags" style="border: 1px solid green">
+        <div>{{lineBag.type.name}}</div>
+        <div *ngFor="let line of lineBag.lines">
+          {{line.name}}
+        </div>
       </ion-item>
     </ion-list>
-
-    <map-partial></map-partial>
   </ion-scroll>
 
   <route-type-menu

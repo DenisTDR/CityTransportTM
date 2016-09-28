@@ -35,7 +35,7 @@ export class RoutesTablePage {
   }
 
   private getLines() {
-    this.apiService.getLinesMock(this.selectedRouteType).subscribe(
+    this.apiService.getLinesMock().subscribe(
       lines => {
         console.log('got value ', lines);
         this.gotLines(lines);

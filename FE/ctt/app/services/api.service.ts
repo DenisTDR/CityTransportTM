@@ -40,8 +40,8 @@ export class ApiService {
     return response;
   }
 
-  mockLines: Line[];
-  getLinesMock(routeType: RouteType): Observable<Line[]>{
+  private mockLines: Line[];
+  getLinesMock(): Observable<Line[]>{
     var observable = Observable.create(function(observer) {
       setTimeout(function(){
         if(!this.mockLines)
@@ -86,11 +86,11 @@ var getMockLines = function(): Line[] {
     };
   }
   var lines = [];
-  var routesCount = randomInt(20, 30);
+  var routesCount = randomInt(40, 100);
 
   var groupBy = routesCount/Globals.routeTypes.length;
   for(var i = 0; i < routesCount; i++) {
-    var thisRouteStationsCount = randomInt(5, 15);
+    var thisRouteStationsCount = randomInt(15, 25);
     var r1 = {id: "r" + (2*i), stations: []};
     var r2 = {id: "r" + (2*i+1), stations: []};
     for(var j = 0; j < thisRouteStationsCount; j ++) {
@@ -100,7 +100,8 @@ var getMockLines = function(): Line[] {
     }
     var l = {
       id: "l" + i,
-      name: "" + (i + 1),
+      name: "Linia " + (i + 1),
+      number: i + 1,
       routes: [r1, r2],
       type: Globals.routeTypes[Math.floor(i/groupBy)]
     };

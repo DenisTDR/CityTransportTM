@@ -4,8 +4,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="routes-list" scroll="false">
-  <ion-scroll class="flexOne noPadding">
+<ion-content class="routes-table" scroll="false">
+  <ion-scroll class="flexOne">
     <div *ngIf="!lines || !lines.length">
       Se încarcă ...
     </div>
@@ -17,7 +17,7 @@
                class="line-number line-number-{{lineBag.type.name}}"
                (click)="lineTap(line);">
             <i class="fa fa-circle fa-3x" ></i>
-            <span class="line-name">{{line.name}}</span>
+            <span class="line-name">{{line.number}}</span>
           </div>
         </div>
       </div>

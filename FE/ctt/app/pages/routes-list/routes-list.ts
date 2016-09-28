@@ -44,42 +44,21 @@ export class RoutesListPage {
   }
 
   getRoutes() {
-    // this.gotRoutes(null);
 
-    // if(this.loading) return;
-    // this.loading = true;
-    // console.log("getting routes for: " + this.selectedRouteType.name);
-    // this.apiService.getRoutes(this.selectedRouteType)
-    //   .subscribe(
-    //     data => {
-    //       console.log("data");
-    //       this.gotRoutes(data.json().data);
-    //     },
-    //     err => {
-    //       console.log("err", err);
-    //     },
-    //     () => {
-    //       console.log('Random Quote Complete');
-    //       this.loading = false;
-    //     }
-    //   );
+    this.apiService.getLinesMock().subscribe(
+      data => {
+       this.gotRoutes(data);
+      },
+      err => {
 
+      },
+      () => {
+
+      }
+    )
   }
   gotRoutes(data: any) {
-    if(data === null) {
-      this.lines = [];
-      for(var i = 0; i < 15; i ++) {
-        this.lines.push({
-          id: 22 + i,
-          name: "123" + i,
-          // rawName: "B" + i,
-          routes: [],
-          type: Globals.routeTypes[0]
-        });
-      }
 
-      return;
-    }
     console.log("got data");
     console.log(data);
     var tmpLines = [];

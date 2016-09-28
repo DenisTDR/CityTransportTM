@@ -27,10 +27,16 @@
 
 @import "../pages/partials/map-partial/map-partial";
 
+@import "../pages/lines-table/lines-table";
+
 [hidden] { display: none !important;}
 
 
 .full-width-element {
   width: 100%;
   position: relative;
+}
+
+.flexOne {
+  flex: 1;
 }

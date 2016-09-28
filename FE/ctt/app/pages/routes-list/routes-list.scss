@@ -8,15 +8,7 @@ ion-content.routes-list>scroll-content {
   border: 1px solid red;
 }
 
-.routeList .full-width-element {
-  width: 100%;
-}
-
-.flexOne {
-  flex: 1;
-}
-
-.routes-list-page scroll-content{
+.routes-list scroll-content{
   overflow-y: auto;
 }
 

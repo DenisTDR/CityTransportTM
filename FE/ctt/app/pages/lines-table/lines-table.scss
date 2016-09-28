@@ -1,0 +1,9 @@
+ion-content.lines-table>scroll-content {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.lines-table scroll-content{
+  overflow-y: auto;
+}

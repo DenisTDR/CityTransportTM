@@ -6,6 +6,7 @@ import {RoutesListPage} from '../routes-list/routes-list';
 import {MainMapPage} from "../main-map/main-map";
 import {RoutesTablePage} from "../routes-table/routes-table";
 import {RouteStationsPage} from "../route-stations/route-stations";
+import {LinesTablePage} from "../lines-table/lines-table";
 
 @Component({
   templateUrl: 'build/pages/tabs/tabs.html'
@@ -15,6 +16,8 @@ export class TabsPage {
   private routesTablePage: any;
   private mainMapPageTab: any;
   private routeStations: any;
+  private linesTablePage: any;
+  private routesListPage: any;
 
   constructor() {
     // this tells the tabs component which Pages
@@ -22,5 +25,7 @@ export class TabsPage {
     this.routesTablePage = RoutesTablePage;
     this.mainMapPageTab = MainMapPage;
     this.routeStations = RouteStationsPage;
+    this.routesListPage = RoutesListPage;
+    this.linesTablePage = LinesTablePage;
   }
 }

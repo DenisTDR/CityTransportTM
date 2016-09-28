@@ -1,25 +1,31 @@
-.routes-list ion-scroll {
+ion-content.routes-table>scroll-content {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.routes-table ion-scroll {
   background-color: #f1f1f1;
 }
 
-.routes-list .scroll-zoom-wrapper {
+.routes-table .scroll-zoom-wrapper {
   padding: 2% 10%;
 }
 
-.routes-list .line-type {
+.routes-table .line-type {
   text-transform: uppercase;
-  font-size:2.4 em;
+  font-size: 2.4em;
   //font-weight: 200;
   line-height:3em;
   color:#555;
 }
 
-.lines-table{
+.routes-table{
   width: 100%;
   //margin-bottom:1em;
 }
 
-.routes-list .line-number {
+.routes-table .line-number {
   position:relative;
   width:3em;
   height:3em;
@@ -28,7 +34,7 @@
   margin:1%;
 }
 
-.routes-list .line-name {
+.routes-table .line-name {
   position: absolute;
   color:white;
   float:left;
@@ -44,21 +50,25 @@
 
 // Colors for the lines
 
-.routes-list .line-number-bus i{
+.routes-table .line-number-bus i{
   color:rgb(230, 39, 57);
 }
 
-.routes-list .line-number-trolley i{
+.routes-table .line-number-trolley i{
   color:rgb(255, 177, 51);
 }
 
-.routes-list .line-number-tram i{
+.routes-table .line-number-tram i{
   color:rgb(85, 85, 85);
 }
-.routes-list .line-number-bike i{
+.routes-table .line-number-bike i{
   color:rgb(138, 101, 197);
 }
 
-.routes-list .line-number-boat i{
+.routes-table .line-number-boat i{
   color:rgb(110, 211, 207);
+}
+
+.routes-table scroll-content{
+  overflow-y: auto;
 }
